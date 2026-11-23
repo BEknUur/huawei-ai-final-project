@@ -1,15 +1,14 @@
-"""Оценка диаризации по регионам.
- 
-Правила: collar = 0, skip_overlap = False, один маппинг спикеров на митинг.
+"""Diarization scoring per region.
+
+Rules: collar = 0, skip_overlap = False, one speaker mapping per meeting.
 """
- 
- 
+
+
 def map_hypothesis(ref, hyp, uem):
-    """Переименовать спикеров гипотезы по одному оптимальному маппингу на весь митинг."""
+    """Rename hypothesis speakers using one optimal mapping for the whole meeting."""
     raise NotImplementedError()
- 
- 
+
+
 def score_meeting(ref, hyp, uem):
-    """Секунды missed / false alarm / confusion / total для каждого региона."""
+    """Seconds of missed / false alarm / confusion / total for each region."""
     raise NotImplementedError()
- 

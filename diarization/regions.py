@@ -1,12 +1,12 @@
- 
- 
 def get_regions(ref, uem):
-    """Таймлайны single (1 спикер), overlap (>=2), nonspeech внутри UEM."""
+    """Timelines of single (1 speaker), overlap (>=2) and nonspeech regions inside the UEM."""
     ref = ref.support()
     speech = ref.get_timeline().support()
     overlap = ref.get_overlap()
     single = speech.extrude(overlap)
     nonspeech = uem.extrude(speech)
-    crop = lambda tl: tl.crop(uem, mode="intersection")
-    return {"single": crop(single), "overlap": crop(overlap), "nonspeech": crop(nonspeech)}
- 
+    return {
+        "single": single.crop(uem, mode="intersection"),
+        "overlap": overlap.crop(uem, mode="intersection"),
+        "nonspeech": nonspeech.crop(uem, mode="intersection"),
+    }
